@@ -254,6 +254,56 @@ main {
   gap: 24px;
 }
 
+.pricing-grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.pricing-card {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 40px var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  position: relative;
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 24px;
+  color: var(--muted);
+}
+
+.pricing-card li {
+  margin-bottom: 10px;
+}
+
+.pricing-card .price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 12px 0 0;
+}
+
+.pricing-card.featured {
+  border: 2px solid var(--accent);
+  transform: translateY(-6px);
+}
+
+.badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: var(--accent);
+  color: #ffffff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
 .tool-card {
   background: var(--surface);
   border-radius: 20px;
@@ -309,6 +359,11 @@ textarea {
 .result {
   display: grid;
   gap: 16px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 10px;
 }
 
 .result span {
