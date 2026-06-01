@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toolkit de Redes y Seguridad</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <div class="topbar">
+      <div class="brand">
+        <span class="logo-dot"></span>
+        <span data-i18n="brand">Toolkit de Redes</span>
+      </div>
+      <div class="topbar-actions">
+        <label class="select-wrap">
+          <span data-i18n="language">Idioma</span>
+          <select id="lang-switch" aria-label="Idioma">
+            <option value="es">ES</option>
+            <option value="en">EN</option>
+          </select>
+        </label>
+        <button id="theme-toggle" class="btn ghost" type="button">
+          Modo oscuro
+        </button>
+        <button id="export-pdf" class="btn ghost" type="button" data-i18n="exportPdf">
+          Exportar PDF
+        </button>
+        <button id="export-png" class="btn ghost" type="button" data-i18n="exportPng">
+          Exportar PNG
+        </button>
+      </div>
+    </div>
+    <header class="hero">
+      <div class="hero-content">
+        <p class="eyebrow" data-i18n="heroEyebrow">Toolbox web para estudiar y practicar</p>
+        <h1 data-i18n="heroTitle">Redes, claves y logs en una sola pagina.</h1>
+        <p class="lead" data-i18n="heroLead">
+          Tres utilidades enfocadas a estudio rapido: calculo de subred,
+          analisis de robustez de contrasenas y limpieza de logs con regex.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#subnet" data-i18n="heroSubnet">
+            Ir a Subredes
+          </a>
+          <a class="btn ghost" href="#regex" data-i18n="heroRegex">
+            Ir a Regex Logs
+          </a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="pulse-card">
+          <h3 data-i18n="heroChecklist">Checklist rapido</h3>
+          <ul>
+            <li data-i18n="heroCheck1">Subnetting en tiempo real</li>
+            <li data-i18n="heroCheck2">Entropia estimada y consejos</li>
+            <li data-i18n="heroCheck3">Regex con preview y snippet</li>
+          </ul>
+          <div class="meter">
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="subnet" class="tool-section">
+        <div class="section-header">
+          <h2 data-i18n="subnetTitle">Calculadora de Subredes IP</h2>
+          <p data-i18n="subnetLead">
+            Introduce una IP y una mascara (CIDR o mascara decimal). Obtienes
+            red, broadcast, rango util y numero de hosts.
+          </p>
+        </div>
+        <div class="tool-grid">
+          <div class="tool-card">
+            <label>
+              <span data-i18n="subnetIp">IP</span>
+              <input
+                id="ip-input"
+                type="text"
+                placeholder="192.168.10.34"
+                data-i18n-placeholder="subnetIpPlaceholder"
+              />
+            </label>
+            <label>
+              <span data-i18n="subnetMask">Mascara (CIDR o decimal)</span>
+              <input
+                id="mask-input"
+                type="text"
+                placeholder="/24 o 255.255.255.0"
+                data-i18n-placeholder="subnetMaskPlaceholder"
+              />
+            </label>
+            <button id="subnet-run" class="btn primary" data-i18n="subnetRun">
+              Calcular
+            </button>
+            <p id="subnet-error" class="error"></p>
+          </div>
+          <div class="tool-card">
+            <div class="result">
+              <div>
+                <span data-i18n="subnetNet">Red</span>
+                <strong id="net-output">-</strong>
+              </div>
+              <div>
+                <span data-i18n="subnetBroadcast">Broadcast</span>
+                <strong id="broadcast-output">-</strong>
+              </div>
+              <div>
+                <span data-i18n="subnetRange">Rango util</span>
+                <strong id="range-output">-</strong>
+              </div>
+              <div>
+                <span data-i18n="subnetHosts">Hosts</span>
+                <strong id="hosts-output">-</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="password" class="tool-section">
+        <div class="section-header">
+          <h2 data-i18n="pwdTitle">Analizador de Robustez de Contrasenas</h2>
+          <p data-i18n="pwdLead">
+            Analiza la contrasena localmente. Calcula entropia estimada y tiempo
+            de fuerza bruta segun un modelo simple.
+          </p>
+        </div>
+        <div class="tool-grid">
+          <div class="tool-card">
+            <label>
+              <span data-i18n="pwdLabel">Contrasena</span>
+              <input
+                id="pwd-input"
+                type="password"
+                placeholder="Escribe aqui"
+                data-i18n-placeholder="pwdPlaceholder"
+              />
+            </label>
+            <div class="pwd-row">
+              <label class="inline">
+                <input id="pwd-visibility" type="checkbox" />
+                <span data-i18n="pwdShow">Ver</span>
+              </label>
+              <label class="inline">
+                <input id="pwd-offline" type="checkbox" checked />
+                <span data-i18n="pwdOffline">Ataque offline</span>
+              </label>
+            </div>
+            <p class="muted" data-i18n="pwdLocal">No se envia nada a ningun servidor.</p>
+          </div>
+          <div class="tool-card">
+            <div class="strength">
+              <div class="bar" id="strength-bar"></div>
+              <div class="strength-meta">
+                <span id="strength-label">-</span>
+                <span id="entropy-output">Entropia: -</span>
+              </div>
+            </div>
+            <div class="result">
+              <div>
+                <span data-i18n="pwdTime">Tiempo estimado</span>
+                <strong id="time-output">-</strong>
+              </div>
+              <div>
+                <span data-i18n="pwdPool">Pool de caracteres</span>
+                <strong id="pool-output">-</strong>
+              </div>
+              <div>
+                <span data-i18n="pwdAdvice">Consejo</span>
+                <strong id="advice-output">-</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="regex" class="tool-section">
+        <div class="section-header">
+          <h2 data-i18n="regexTitle">Generador / Limpiador de Regex para Logs</h2>
+          <p data-i18n="regexLead">
+            Pega un log, define un patron y genera un filtro rapido. Incluye un
+            snippet en JavaScript o Python.
+          </p>
+        </div>
+        <div class="tool-grid">
+          <div class="tool-card">
+            <label>
+              <span data-i18n="regexLog">Log de entrada</span>
+              <textarea
+                id="log-input"
+                rows="8"
+                placeholder="Pega tu log aqui"
+                data-i18n-placeholder="regexLogPlaceholder"
+              ></textarea>
+            </label>
+            <label>
+              <span data-i18n="regexPattern">Regex</span>
+              <input
+                id="regex-input"
+                type="text"
+                placeholder="(ERROR|WARN).*"
+                data-i18n-placeholder="regexPatternPlaceholder"
+              />
+            </label>
+            <label>
+              <span data-i18n="regexReplace">Reemplazo (opcional)</span>
+              <input id="replace-input" type="text" placeholder="" />
+            </label>
+            <div class="row">
+              <label>
+                <span data-i18n="regexLang">Lenguaje</span>
+                <select id="lang-select">
+                  <option value="js">JavaScript</option>
+                  <option value="py">Python</option>
+                </select>
+              </label>
+              <label class="inline">
+                <input id="regex-global" type="checkbox" checked />
+                <span data-i18n="regexGlobal">Global</span>
+              </label>
+              <label class="inline">
+                <input id="regex-ignore" type="checkbox" />
+                <span data-i18n="regexIgnore">Ignore case</span>
+              </label>
+            </div>
+            <button id="regex-run" class="btn primary" data-i18n="regexRun">
+              Aplicar
+            </button>
+            <p id="regex-error" class="error"></p>
+          </div>
+          <div class="tool-card">
+            <div class="result">
+              <div>
+                <span data-i18n="regexPreview">Preview</span>
+                <pre id="log-preview">-</pre>
+              </div>
+              <div>
+                <span data-i18n="regexSnippet">Snippet</span>
+                <pre id="snippet-output">-</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p data-i18n="footer">Hecho para estudio rapido. Todo corre en el navegador.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
