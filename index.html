@@ -4,6 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toolkit de Redes y Seguridad</title>
+    <meta
+      name="description"
+      content="Calculadora de subredes, analizador de contrasenas y limpieza de logs con regex. Todo en una pagina y sin backend."
+    />
+    <meta property="og:title" content="Toolkit de Redes y Seguridad" />
+    <meta
+      property="og:description"
+      content="Calculadora de subredes, analizador de contrasenas y limpieza de logs con regex."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jordi05.github.io/projects/" />
+    <meta property="og:image" content="https://jordi05.github.io/projects/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -43,6 +56,9 @@
         <div class="hero-actions">
           <a class="btn primary" href="#subnet" data-i18n="heroSubnet">
             Ir a Subredes
+          </a>
+          <a class="btn ghost" href="#pricing" data-i18n="heroPricing">
+            Ver planes
           </a>
           <a class="btn ghost" href="#regex" data-i18n="heroRegex">
             Ir a Regex Logs
@@ -246,6 +262,122 @@
           </div>
         </div>
       </section>
+
+      <section id="pricing" class="tool-section">
+        <div class="section-header">
+          <h2 data-i18n="pricingTitle">Planes simples</h2>
+          <p data-i18n="pricingLead">
+            Empieza gratis y desbloquea extras cuando necesites mas potencia.
+          </p>
+        </div>
+        <div class="pricing-grid">
+          <article class="pricing-card">
+            <h3 data-i18n="pricingFreeTitle">Gratis</h3>
+            <p class="price" data-i18n="pricingFreePrice">0 eur</p>
+            <ul>
+              <li data-i18n="pricingFree1">Todas las herramientas basicas</li>
+              <li data-i18n="pricingFree2">Exportar PDF y PNG</li>
+              <li data-i18n="pricingFree3">Sin registro</li>
+            </ul>
+            <a class="btn ghost" href="#contact" data-i18n="pricingFreeCta">
+              Pedir mejoras
+            </a>
+          </article>
+          <article class="pricing-card featured">
+            <div class="badge" data-i18n="pricingProBadge">Recomendado</div>
+            <h3 data-i18n="pricingProTitle">Pro</h3>
+            <p class="price" data-i18n="pricingProPrice">9 eur / mes</p>
+            <ul>
+              <li data-i18n="pricingPro1">Exportes en lote</li>
+              <li data-i18n="pricingPro2">Plantillas de regex</li>
+              <li data-i18n="pricingPro3">Soporte prioritario</li>
+            </ul>
+            <a class="btn primary" href="#contact" data-i18n="pricingProCta">
+              Solicitar acceso
+            </a>
+          </article>
+          <article class="pricing-card">
+            <h3 data-i18n="pricingTeamTitle">Equipo</h3>
+            <p class="price" data-i18n="pricingTeamPrice">Consultar</p>
+            <ul>
+              <li data-i18n="pricingTeam1">Acceso compartido</li>
+              <li data-i18n="pricingTeam2">Integracion con docu</li>
+              <li data-i18n="pricingTeam3">Facturacion anual</li>
+            </ul>
+            <a class="btn ghost" href="#contact" data-i18n="pricingTeamCta">
+              Hablar ahora
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="tool-section">
+        <div class="section-header">
+          <h2 data-i18n="contactTitle">Contacto rapido</h2>
+          <p data-i18n="contactLead">
+            Cuentame que necesitas y te respondo con un plan claro.
+          </p>
+        </div>
+        <div class="tool-grid">
+          <div class="tool-card">
+            <form
+              class="contact-form"
+              action="https://formspree.io/f/mredwreg"
+              method="POST"
+            >
+              <label>
+                <span data-i18n="contactName">Nombre</span>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Tu nombre"
+                  data-i18n-placeholder="contactNamePlaceholder"
+                />
+              </label>
+              <label>
+                <span data-i18n="contactEmail">Email</span>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="tucorreo@email.com"
+                  data-i18n-placeholder="contactEmailPlaceholder"
+                />
+              </label>
+              <label>
+                <span data-i18n="contactMessage">Mensaje</span>
+                <textarea
+                  name="message"
+                  rows="5"
+                  required
+                  placeholder="Que necesitas exactamente"
+                  data-i18n-placeholder="contactMessagePlaceholder"
+                ></textarea>
+              </label>
+              <button class="btn primary" type="submit" data-i18n="contactCta">
+                Enviar
+              </button>
+            </form>
+          </div>
+          <div class="tool-card">
+            <div class="result">
+              <div>
+                <span data-i18n="contactFast">Respuesta rapida</span>
+                <strong data-i18n="contactFastValue">En menos de 24h</strong>
+              </div>
+              <div>
+                <span data-i18n="contactScope">Servicios</span>
+                <strong data-i18n="contactScopeValue">Web, SEO, automatizacion</strong>
+              </div>
+              <div>
+                <span data-i18n="contactProof">Confianza</span>
+                <strong data-i18n="contactProofValue">Trabajo por objetivos</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
@@ -253,6 +385,11 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script
+      defer
+      data-domain="jordi05.github.io"
+      src="https://plausible.io/js/script.js"
+    ></script>
     <script src="app.js"></script>
   </body>
 </html>
